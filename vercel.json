@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/servico/reboque-rio-de-janeiro",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/servico/reboque-rio-de-janeiro/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*/index.html",
+      "destination": "/:path*/",
+      "statusCode": 301
+    }
+  ]
+}
