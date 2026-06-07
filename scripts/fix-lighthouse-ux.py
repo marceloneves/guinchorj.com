@@ -42,7 +42,25 @@ LOGO_SRC = re.compile(
 
 OVERSIZED_CARD_IMAGE = re.compile(
     r'(<img width="392" height="205" src=")((?:\.?/?(?:\.\./)*)wp-content/uploads/2025/08/)'
-    r'guinchorj-rio-de-janeiro-670x441\.webp(" class="[^"]*wp-post-image")',
+    r'guinchorj-rio-de-janeiro-670x441\.webp"(\s+class="[^"]*wp-post-image")',
+    re.IGNORECASE,
+)
+
+BROKEN_CARD_SRCSET = re.compile(
+    r'srcset="((?:\.?/?(?:\.\./)*)wp-content/uploads/2025/08/)guinchorj-rio-de-janeiro-392x262\.webp 392w, '
+    r'(?:\.?/?(?:\.\./)*)wp-content/uploads/2025/08/guinchorj-rio-de-janeiro-670x441\.webp 670w" '
+    r'sizes="\(max-width: 576px\) 100vw, \(max-width: 992px\) 50vw, 392px""',
+    re.IGNORECASE,
+)
+
+BROKEN_SIZES_QUOTE = re.compile(
+    r'sizes="\(max-width: 576px\) 100vw, \(max-width: 992px\) 50vw, 392px""',
+    re.IGNORECASE,
+)
+
+CARD_SRCSET_670 = re.compile(
+    r'srcset="((?:\.?/?(?:\.\./)*)wp-content/uploads/2025/08/)guinchorj-rio-de-janeiro-392x262\.webp 392w, '
+    r'(?:\.?/?(?:\.\./)*)wp-content/uploads/2025/08/guinchorj-rio-de-janeiro-670x441\.webp 670w"',
     re.IGNORECASE,
 )
 
@@ -93,16 +111,37 @@ def fix_logo_loading(html: str) -> str:
     )
 
 
+def card_srcset_markup(base: str) -> str:
+    src392 = f"{base}guinchorj-rio-de-janeiro-392x262.webp"
+    src540 = f"{base}guinchorj-rio-de-janeiro-540x354.webp"
+    return (
+        f'srcset="{src392} 392w, {src540} 540w" '
+        f'sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 392px"'
+    )
+
+
+def fix_broken_card_srcset(html: str) -> str:
+    html = BROKEN_SIZES_QUOTE.sub(
+        'sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 392px"',
+        html,
+    )
+
+    def repl670(match: re.Match[str]) -> str:
+        return card_srcset_markup(match.group(1))
+
+    html = CARD_SRCSET_670.sub(repl670, html)
+
+    def repl(match: re.Match[str]) -> str:
+        return card_srcset_markup(match.group(1))
+
+    return BROKEN_CARD_SRCSET.sub(repl, html)
+
+
 def fix_oversized_card_images(html: str) -> str:
     def repl(match: re.Match[str]) -> str:
         prefix, base, suffix = match.groups()
         src392 = f"{base}guinchorj-rio-de-janeiro-392x262.webp"
-        src670 = f"{base}guinchorj-rio-de-janeiro-670x441.webp"
-        return (
-            f'{prefix}{src392}" '
-            f'srcset="{src392} 392w, {src670} 670w" '
-            f'sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 392px"{suffix}'
-        )
+        return f'{prefix}{src392}" {card_srcset_markup(base)}{suffix}'
 
     return OVERSIZED_CARD_IMAGE.sub(repl, html)
 
@@ -116,6 +155,7 @@ def process_file(path: Path) -> bool:
     updated = defer_theme_scripts(updated)
     updated = add_logo_srcset(updated)
     updated = fix_logo_loading(updated)
+    updated = fix_broken_card_srcset(updated)
     updated = fix_oversized_card_images(updated)
 
     if updated != original:
