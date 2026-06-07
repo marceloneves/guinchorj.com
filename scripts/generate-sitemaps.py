@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
@@ -29,6 +30,19 @@ URLSET_OPEN = (
     'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 )
 INDEX_OPEN = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+
+
+@dataclass(frozen=True)
+class LocalBusiness:
+    name: str
+    description: str
+    url: str
+    phone: str
+    email: str
+    address: str
+    latitude: str
+    longitude: str
+    lastmod: str
 
 
 @dataclass(frozen=True)
@@ -196,6 +210,149 @@ def chunk_entries(
     return chunks
 
 
+def extract_local_business() -> LocalBusiness:
+    index_path = ROOT / "index.html"
+    html = index_path.read_text(encoding="utf-8", errors="replace")
+    business: dict | None = None
+
+    for match in re.finditer(
+        r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',
+        html,
+        re.S,
+    ):
+        try:
+            data = json.loads(match.group(1))
+        except json.JSONDecodeError:
+            continue
+
+        items = data.get("@graph", [data]) if isinstance(data, dict) else data
+        for item in items:
+            item_type = item.get("@type", [])
+            if isinstance(item_type, str):
+                item_type = [item_type]
+            if "LocalBusiness" in item_type:
+                business = item
+                break
+        if business:
+            break
+
+    if not business:
+        raise ValueError("LocalBusiness não encontrado em index.html")
+
+    address = business.get("address", {})
+    street = address.get("streetAddress", "").strip()
+    locality = address.get("addressLocality", "Rio de Janeiro").strip()
+    region = address.get("addressRegion", "RJ").strip()
+    postal = address.get("postalCode", "20071-002").strip()
+    country = address.get("addressCountry", "BR").strip()
+
+    geo = business.get("geo", {})
+    latitude = str(geo.get("latitude", "-22.90942221073698")).strip()
+    longitude = str(geo.get("longitude", "-43.204173832005104")).strip()
+
+    phone = business.get("telephone", "(21) 95954-3043").strip()
+    phone_digits = re.sub(r"\D", "", phone)
+    if phone_digits.startswith("55") and len(phone_digits) >= 12:
+        formatted_phone = (
+            f"+55-{phone_digits[2:4]}-{phone_digits[4:9]}-{phone_digits[9:]}"
+        )
+    elif len(phone_digits) == 11:
+        formatted_phone = (
+            f"+55-{phone_digits[:2]}-{phone_digits[2:7]}-{phone_digits[7:]}"
+        )
+    elif len(phone_digits) == 10:
+        formatted_phone = (
+            f"+55-{phone_digits[:2]}-{phone_digits[2:6]}-{phone_digits[6:]}"
+        )
+    else:
+        formatted_phone = phone
+
+    description = business.get("description", "").strip()
+    meta = re.search(r'name="description"\s+content="([^"]+)"', html)
+    if meta:
+        description = meta.group(1).strip()
+
+    cep_match = re.search(r"CEP\s*(\d{5}-?\d{3})", street, re.I)
+    if cep_match:
+        postal = cep_match.group(1)
+
+    address_parts = [street, locality, region, postal, country]
+    address_line = ", ".join(part for part in address_parts if part)
+
+    return LocalBusiness(
+        name=business.get("name", "Guincho RJ").strip(),
+        description=description,
+        url=SITE + "/",
+        phone=formatted_phone,
+        email=business.get("email", "contato@guinchorj.com").strip(),
+        address=address_line,
+        latitude=latitude,
+        longitude=longitude,
+        lastmod=extract_lastmod(html, index_path),
+    )
+
+
+def render_locations_kml(business: LocalBusiness) -> str:
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">',
+        "\t<Document>",
+        f"\t\t<name>Locations for {escape(business.name)}</name>",
+        "\t\t<open>1</open>",
+        "\t\t<Folder>",
+        f'\t\t\t<atom:link href="{escape(business.url)}" />',
+        "\t\t\t<Placemark>",
+        f"\t\t\t\t<name><![CDATA[{business.name}]]></name>",
+        f"\t\t\t\t<description><![CDATA[{business.description}]]></description>",
+        f"\t\t\t\t<address><![CDATA[{business.address}]]></address>",
+        f"\t\t\t\t<phoneNumber><![CDATA[{business.phone}]]></phoneNumber>",
+        f'\t\t\t\t<atom:link href="{escape(business.url)}"/>',
+        "\t\t\t\t<LookAt>",
+        f"\t\t\t\t\t<latitude>{escape(business.latitude)}</latitude>",
+        f"\t\t\t\t\t<longitude>{escape(business.longitude)}</longitude>",
+        "\t\t\t\t\t<altitude>0</altitude>",
+        "\t\t\t\t\t<range></range>",
+        "\t\t\t\t\t<tilt>0</tilt>",
+        "\t\t\t\t</LookAt>",
+        "\t\t\t\t<Point>",
+        f"\t\t\t\t\t<coordinates>{escape(business.longitude)},{escape(business.latitude)}</coordinates>",
+        "\t\t\t\t</Point>",
+        "\t\t\t</Placemark>",
+        "\t\t</Folder>",
+        "\t</Document>",
+        "</kml>",
+        RANK_MATH_FOOTER,
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def render_local_sitemap(business: LocalBusiness) -> str:
+    kml_url = f"{SITE}/locations.kml"
+    body = "\n".join(
+        [
+            "\t<url>",
+            f"\t\t<loc>{escape(kml_url)}</loc>",
+            f"\t\t<lastmod>{escape(business.lastmod)}</lastmod>",
+            "\t</url>",
+        ]
+    )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{body}\n"
+        "</urlset>\n"
+        f"{RANK_MATH_FOOTER}\n"
+    )
+
+
+def write_local_seo_files() -> LocalBusiness:
+    business = extract_local_business()
+    (ROOT / "locations.kml").write_text(render_locations_kml(business), encoding="utf-8")
+    (ROOT / "local-sitemap.xml").write_text(render_local_sitemap(business), encoding="utf-8")
+    return business
+
+
 def render_url_block(entry: SitemapEntry) -> str:
     lines = [
         "\t<url>",
@@ -262,13 +419,9 @@ def write_sitemaps() -> dict[str, int]:
             index_files.append((filename, latest_lastmod(entries)))
             written_files.add(filename)
 
-            if base == "servico" and filename == "servico-sitemap.xml":
-                (ROOT / "local-sitemap.xml").write_text(content, encoding="utf-8")
-                index_files.insert(
-                    len(index_files) - 1,
-                    ("local-sitemap.xml", latest_lastmod(entries)),
-                )
-                written_files.add("local-sitemap.xml")
+    business = write_local_seo_files()
+    index_files.append(("local-sitemap.xml", business.lastmod))
+    written_files.add("local-sitemap.xml")
 
     for stale in ROOT.glob("*-sitemap*.xml"):
         if stale.name != "sitemap_index.xml" and stale.name not in written_files:
@@ -307,6 +460,7 @@ def main() -> None:
     for name, count in counts.items():
         if count:
             print(f"  {name}: {count} URLs")
+    print("  local-sitemap.xml -> locations.kml (Local SEO)")
     print("  sitemap_index.xml")
     print("  robots.txt")
     print(f"  Total: {total} URLs")
