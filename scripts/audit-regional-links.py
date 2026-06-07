@@ -242,7 +242,22 @@ def audit_service_page(
             )
 
     pillar_slug = region_pillars.get(region)
-    if pillar_slug and slug != pillar_slug:
+    if pillar_slug and slug == pillar_slug:
+        satellites = set(regions[region]) - {slug}
+        satellite_links = report.content.found & satellites
+        missing = satellites - satellite_links
+        if missing:
+            report.content.ok = False
+            report.content.notes.append(
+                f"pilar sem link a {len(missing)} satélite(s): "
+                f"{', '.join(sorted(missing)[:5])}"
+                + (f" … +{len(missing) - 5}" if len(missing) > 5 else "")
+            )
+        elif satellites:
+            report.content.notes.append(
+                f"pilar com link a todos os {len(satellites)} satélites do cluster"
+            )
+    elif pillar_slug and slug != pillar_slug:
         pillar_count = count_pillar_links(content_html, pillar_slug)
         if pillar_count < 2:
             report.content.ok = False
@@ -377,10 +392,46 @@ def main() -> None:
     print("  • Rodapé (todas as páginas): somente os 10 hubs regionais")
     print("  • Header: sem links para bairros/cidades (ideal: nenhum /servico/ ou só hubs)")
     print("  • Sidebar (páginas /servico/): somente serviços da mesma região")
-    print("  • Conteúdo: links /servico/ da mesma região (vazamento = problema)")
+    print("  • Conteúdo (satélites): mín. 2 links do cluster + 2 ao pilar regional")
+    print("  • Conteúdo (pilares): 1 link no conteúdo para cada satélite do cluster")
     print()
 
-    total_issues = 0
+    pillar_reports = [
+        report
+        for report in service_reports
+        if report.slug in region_pillars.values()
+    ]
+    print("=" * 72)
+    print("PILARES REGIONAIS — links a satélites no conteúdo")
+    print("=" * 72)
+    pillar_issues = 0
+    for report in sorted(pillar_reports, key=lambda item: item.region):
+        satellites_linked = [
+            note
+            for note in report.content.notes
+            if note.startswith("pilar com ")
+        ]
+        detail = satellites_linked[0] if satellites_linked else "—"
+        failed = any(note.startswith("pilar sem link") for note in report.content.notes)
+        complete = any(
+            note.startswith("pilar com link a todos")
+            for note in report.content.notes
+        )
+        if failed:
+            pillar_issues += 1
+        status = "OK" if complete and not failed else "FALHA"
+        label = REGION_LABELS.get(report.region, report.region)
+        detail = next(
+            (note for note in report.content.notes if note.startswith("pilar ")),
+            "—",
+        )
+        print(f"  {status} {label} ({report.slug}) — {detail}")
+        for note in report.content.notes:
+            if note.startswith("pilar sem link"):
+                print(f"         {note}")
+    print(f"\nPilares auditados: {len(pillar_reports)} | Com problema: {pillar_issues}\n")
+
+    total_issues = pillar_issues
     for region in audit_regions:
         summary = summarize_region(region, service_reports)
         pages = summary["pages"]
