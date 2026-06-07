@@ -2,7 +2,9 @@
 
 > Serviço de guincho e reboque 24 horas no Rio de Janeiro e Região Metropolitana desde 1995. Atendimento por telefone e WhatsApp (21) 95954-3043.
 
-Site institucional e SEO local da Guincho RJ. Páginas por bairro, região e tipo de veículo. URLs canônicas em `https://guinchorj.com/` com barra final. Sitemap: https://guinchorj.com/sitemap_index.xml
+Site institucional e SEO local da Guincho RJ. Páginas por bairro, região e tipo de veículo. URLs canônicas em `https://guinchorj.com/` com barra final.
+
+Sitemaps: https://guinchorj.com/sitemap_index.xml (post, page, regiões atendidas, local/KML, serviço, category)
 
 ## Páginas principais
 
@@ -16,7 +18,6 @@ Site institucional e SEO local da Guincho RJ. Páginas por bairro, região e tip
 
 ## Pilares regionais (serviço)
 
-- [Reboque Rio de Janeiro](https://guinchorj.com/servico/reboque-rio-de-janeiro/): Hub geral da cidade
 - [Reboque Zona Sul](https://guinchorj.com/servico/reboque-na-zona-sul-no-rj/): Cobertura da Zona Sul
 - [Reboque Zona Norte](https://guinchorj.com/servico/reboque-zona-norte-rj/): Cobertura da Zona Norte
 - [Reboque Zona Oeste](https://guinchorj.com/servico/reboque-zona-oeste/): Cobertura da Zona Oeste
