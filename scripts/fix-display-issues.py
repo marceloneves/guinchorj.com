@@ -17,10 +17,33 @@ FIXED_FLATICON_RULE = (
 )
 
 
+BROKEN_IMAGE_META_REPLACEMENTS = (
+    (".webp >", ".webp\">"),
+    (".jpg >", ".jpg\">"),
+    (".jpeg >", ".jpeg\">"),
+    (".png >", ".png\">"),
+    (".webp \">", ".webp\">"),
+    (".jpg \">", ".jpg\">"),
+    (".jpeg \">", ".jpeg\">"),
+    (".png \">", ".png\">"),
+)
+
+
+def fix_broken_image_meta_quotes(html: str) -> str:
+    """Corrige meta og:image com aspas faltando (ex.: content=\"...webp >)."""
+    updated = html
+    for broken, fixed in BROKEN_IMAGE_META_REPLACEMENTS:
+        updated = updated.replace(broken, fixed)
+    return updated
+
+
 def process_file(path: Path) -> bool:
     original = path.read_text(encoding="utf-8")
     updated = original.replace(BROKEN_FLATICON_RULE, FIXED_FLATICON_RULE)
     updated = updated.replace(".webpwebp", ".webp")
+    updated = updated.replace(".pngpng >", '.png">')
+    updated = updated.replace(".jpgjpg >", '.jpg">')
+    updated = fix_broken_image_meta_quotes(updated)
 
     if updated != original:
         path.write_text(updated, encoding="utf-8")

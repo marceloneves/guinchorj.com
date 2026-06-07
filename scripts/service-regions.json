@@ -187,11 +187,12 @@
     "reboque-em-silva-jardim"
   ],
   "litoral-lagos": [
-    "reboque-em-cabo-frio",
+    "reboque-litoral-lagos",
     "reboque-em-araruama",
-    "reboque-em-saquarema",
-    "reboque-em-armacao-dos-buzios",
+    "reboque-em-cabo-frio",
     "reboque-em-arraial-do-cabo",
+    "reboque-em-armacao-dos-buzios",
+    "reboque-em-saquarema",
     "reboque-em-sao-pedro-da-aldeia",
     "reboque-em-iguaba-grande"
   ],
@@ -203,8 +204,9 @@
     "reboque-em-itaguai"
   ],
   "regiao-serrana": [
-    "reboque-em-petropolis",
+    "reboque-regiao-serrana",
     "reboque-em-teresopolis",
+    "reboque-em-petropolis",
     "reboque-em-nova-friburgo",
     "reboque-em-itatiaia",
     "reboque-em-itaipava"

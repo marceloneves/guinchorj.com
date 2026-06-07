@@ -1,0 +1,16 @@
+name: Validar HTML semântico
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  validate-semantic-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validar HTML semântico (modo estrito)
+        run: python3 scripts/validate-semantic-html.py --strict
