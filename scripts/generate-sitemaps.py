@@ -12,7 +12,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://guinchorj.com"
 MAX_ENTRIES = 100
-MAX_ENTRIES_OVERRIDES = {"servico": 1000}
+MAX_ENTRIES_OVERRIDES = {"servico": 1000, "regioes-atendidas": 1000}
 SKIP_PATHS = {"_downloads.html"}
 
 RANK_MATH_FOOTER = (
@@ -109,6 +109,8 @@ def sitemap_bucket(path: Path, schema_type: str | None) -> str:
         return "servico"
     if rel == "blog/reboque-e-guincho/index.html":
         return "category"
+    if rel == "regioes-atendidas/index.html" or rel.startswith("regioes-atendidas/"):
+        return "regioes-atendidas"
     return "page"
 
 
@@ -142,6 +144,7 @@ def load_entries() -> dict[str, list[SitemapEntry]]:
     grouped: dict[str, list[SitemapEntry]] = {
         "post": [],
         "page": [],
+        "regioes-atendidas": [],
         "servico": [],
         "category": [],
     }
@@ -249,12 +252,41 @@ def write_sitemaps() -> dict[str, int]:
     index_files: list[tuple[str, str]] = []
     counts: dict[str, int] = {}
 
-    for base in ("post", "page", "servico", "category"):
+    written_files: set[str] = set()
+    for base in ("post", "page", "regioes-atendidas", "servico", "category"):
         chunks = chunk_entries(grouped[base], base)
         counts[base] = len(grouped[base])
         for filename, entries in chunks:
-            (ROOT / filename).write_text(render_urlset(entries), encoding="utf-8")
+            content = render_urlset(entries)
+            (ROOT / filename).write_text(content, encoding="utf-8")
             index_files.append((filename, latest_lastmod(entries)))
+            written_files.add(filename)
+
+            if base == "servico" and filename == "servico-sitemap.xml":
+                (ROOT / "local-sitemap.xml").write_text(content, encoding="utf-8")
+                index_files.insert(
+                    len(index_files) - 1,
+                    ("local-sitemap.xml", latest_lastmod(entries)),
+                )
+                written_files.add("local-sitemap.xml")
+
+    for stale in ROOT.glob("*-sitemap*.xml"):
+        if stale.name != "sitemap_index.xml" and stale.name not in written_files:
+            stale.unlink()
+
+    index_files.sort(
+        key=lambda item: (
+            {
+                "post-sitemap.xml": 0,
+                "page-sitemap.xml": 1,
+                "regioes-atendidas-sitemap.xml": 2,
+                "local-sitemap.xml": 3,
+                "servico-sitemap.xml": 4,
+                "category-sitemap.xml": 99,
+            }.get(item[0], 50),
+            item[0],
+        )
+    )
 
     (ROOT / "sitemap_index.xml").write_text(render_index(index_files), encoding="utf-8")
 

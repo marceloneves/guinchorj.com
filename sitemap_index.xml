@@ -6,7 +6,15 @@
 	</sitemap>
 	<sitemap>
 		<loc>https://guinchorj.com/page-sitemap.xml</loc>
+		<lastmod>2026-05-26T11:58:48+00:00</lastmod>
+	</sitemap>
+	<sitemap>
+		<loc>https://guinchorj.com/regioes-atendidas-sitemap.xml</loc>
 		<lastmod>2026-06-07T17:29:06+00:00</lastmod>
+	</sitemap>
+	<sitemap>
+		<loc>https://guinchorj.com/local-sitemap.xml</loc>
+		<lastmod>2026-04-19T17:54:57+00:00</lastmod>
 	</sitemap>
 	<sitemap>
 		<loc>https://guinchorj.com/servico-sitemap.xml</loc>
