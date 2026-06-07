@@ -28,6 +28,10 @@ ARTICLE_BLOCK = re.compile(
     r'<article class="col-lg-(?:8|12)[^"]*">(.*?)</article>',
     re.DOTALL,
 )
+WRITTEN_CONTENT_BLOCK = re.compile(
+    r'<div class="writen_content">(.*?)</div>\s*</div>(?=\s*(?:<nav|<aside|</article|$))',
+    re.DOTALL,
+)
 
 REGION_LABELS = {
     "rio-geral": "Rio de Janeiro (geral)",
@@ -193,6 +197,11 @@ def audit_section(
 all_slugs_cache: set[str] = set()
 
 
+def extract_writen_content(html: str) -> str:
+    match = WRITTEN_CONTENT_BLOCK.search(html)
+    return match.group(1) if match else html
+
+
 def audit_service_page(
     path: Path,
     regions: dict[str, list[str]],
@@ -231,6 +240,7 @@ def audit_service_page(
 
     article_match = ARTICLE_BLOCK.search(main)
     content_html = article_match.group(1) if article_match else main
+    written_content_html = extract_writen_content(content_html)
     content_allowed = expected_content_slugs(slug, region, regions)
     report.content = audit_section(content_html, allowed=content_allowed, optional=True)
     if content_allowed is not None:
@@ -244,18 +254,22 @@ def audit_service_page(
     pillar_slug = region_pillars.get(region)
     if pillar_slug and slug == pillar_slug:
         satellites = set(regions[region]) - {slug}
-        satellite_links = report.content.found & satellites
+        written_links = service_slugs_from_hrefs(
+            hrefs_from(written_content_html),
+            all_slugs_cache,
+        )
+        satellite_links = written_links & satellites
         missing = satellites - satellite_links
         if missing:
             report.content.ok = False
             report.content.notes.append(
-                f"pilar sem link a {len(missing)} satélite(s): "
+                f"pilar sem link no writen_content a {len(missing)} satélite(s): "
                 f"{', '.join(sorted(missing)[:5])}"
                 + (f" … +{len(missing) - 5}" if len(missing) > 5 else "")
             )
         elif satellites:
             report.content.notes.append(
-                f"pilar com link a todos os {len(satellites)} satélites do cluster"
+                f"pilar com link no writen_content a todos os {len(satellites)} satélites"
             )
     elif pillar_slug and slug != pillar_slug:
         pillar_count = count_pillar_links(content_html, pillar_slug)
@@ -393,7 +407,7 @@ def main() -> None:
     print("  • Header: sem links para bairros/cidades (ideal: nenhum /servico/ ou só hubs)")
     print("  • Sidebar (páginas /servico/): somente serviços da mesma região")
     print("  • Conteúdo (satélites): mín. 2 links do cluster + 2 ao pilar regional")
-    print("  • Conteúdo (pilares): 1 link no conteúdo para cada satélite do cluster")
+    print("  • Conteúdo (pilares): 1 link no writen_content para cada satélite do cluster")
     print()
 
     pillar_reports = [
@@ -414,7 +428,7 @@ def main() -> None:
         detail = satellites_linked[0] if satellites_linked else "—"
         failed = any(note.startswith("pilar sem link") for note in report.content.notes)
         complete = any(
-            note.startswith("pilar com link a todos")
+            note.startswith("pilar com link no writen_content a todos")
             for note in report.content.notes
         )
         if failed:

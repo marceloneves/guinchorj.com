@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Garante 1 link no conteúdo de cada pilar regional para cada satélite do cluster."""
+"""Garante 1 link no writen_content de cada pilar para cada satélite do cluster."""
 
 from __future__ import annotations
 
@@ -17,10 +17,26 @@ ARTICLE_BLOCK = re.compile(
     r'(<article class="col-lg-(?:8|12)[^"]*">)(.*?)(</article>)',
     re.DOTALL,
 )
+WRITTEN_CONTENT_BLOCK = re.compile(
+    r'(<div class="writen_content">)(.*?)(</div>\s*</div>)(?=\s*(?:<nav|<aside|</article|$))',
+    re.DOTALL,
+)
 HREF_PATTERN = re.compile(r'href="([^"]+)"')
-NAV_MARKER = 'aria-label="Satélites do cluster regional"'
-NAV_UL = re.compile(
-    rf'<nav[^>]*{re.escape(NAV_MARKER)}[^>]*>.*?<ul class="pillar-cluster-links">(.*?)</ul>',
+CLUSTER_MARKER = 'aria-label="Satélites do cluster regional"'
+EXTERNAL_CLUSTER_NAV = re.compile(
+    rf'<nav[^>]*{re.escape(CLUSTER_MARKER)}[^>]*>.*?</nav>\s*',
+    re.DOTALL | re.IGNORECASE,
+)
+CLUSTER_SECTION = re.compile(
+    rf'<section[^>]*{re.escape(CLUSTER_MARKER)}[^>]*>.*?</section>\s*',
+    re.DOTALL | re.IGNORECASE,
+)
+CLUSTER_UL = re.compile(
+    rf'(<section[^>]*{re.escape(CLUSTER_MARKER)}[^>]*>.*?<ul class="pillar-cluster-links">)(.*?)(</ul>)',
+    re.DOTALL | re.IGNORECASE,
+)
+EXTERNAL_CLUSTER_UL = re.compile(
+    rf'(<nav[^>]*{re.escape(CLUSTER_MARKER)}[^>]*>.*?<ul class="pillar-cluster-links">)(.*?)(</ul>)',
     re.DOTALL | re.IGNORECASE,
 )
 
@@ -88,6 +104,13 @@ def satellite_links_in_content(content: str, all_slugs: set[str]) -> set[str]:
     return found
 
 
+def extract_written_content(article_inner: str) -> str | None:
+    match = WRITTEN_CONTENT_BLOCK.search(article_inner)
+    if not match:
+        return None
+    return match.group(2)
+
+
 def load_satellite(slug: str) -> SatellitePage:
     page = ROOT / "servico" / slug / "index.html"
     text = page.read_text(encoding="utf-8")
@@ -104,48 +127,51 @@ def make_list_item(satellite: SatellitePage) -> str:
     )
 
 
-def build_nav_block(region: str, satellites: list[SatellitePage]) -> str:
+def build_cluster_section(region: str, satellites: list[SatellitePage]) -> str:
     heading = REGION_HEADINGS.get(region, "Reboque por localidade")
     items = "".join(make_list_item(item) for item in satellites)
     safe_heading = html.escape(heading)
     return (
-        f'<nav aria-label="Satélites do cluster regional">'
+        f'<section class="pillar-cluster-links-section" {CLUSTER_MARKER}>'
         f"<h2>{safe_heading}</h2>"
         f'<ul class="pillar-cluster-links">{items}</ul>'
-        f"</nav>"
+        f"</section>"
     )
 
 
-def append_to_nav(content: str, satellites: list[SatellitePage]) -> str:
+def append_to_cluster_list(content: str, satellites: list[SatellitePage]) -> str:
     items = "".join(make_list_item(item) for item in satellites)
-    nav_match = NAV_UL.search(content)
-    if not nav_match:
-        return content
-    insert_at = nav_match.end(1)
-    inner_start = nav_match.start(1)
-    return content[:insert_at] + items + content[insert_at:]
+    for pattern in (CLUSTER_UL, EXTERNAL_CLUSTER_UL):
+        match = pattern.search(content)
+        if match:
+            return content[: match.end(2)] + items + content[match.end(2) :]
+    return content
 
 
-def enrich_pillar_content(
-    content: str,
+def remove_external_cluster_nav(article_inner: str) -> str:
+    return EXTERNAL_CLUSTER_NAV.sub("", article_inner)
+
+
+def enrich_written_content(
+    written_body: str,
     region: str,
     satellites: list[SatellitePage],
     all_slugs: set[str],
 ) -> tuple[str, int]:
     if not satellites:
-        return content, 0
+        return written_body, 0
 
-    linked = satellite_links_in_content(content, all_slugs)
+    linked = satellite_links_in_content(written_body, all_slugs)
     missing = [item for item in satellites if item.slug not in linked]
     if not missing:
-        return content, 0
+        return written_body, 0
 
-    if NAV_MARKER in content:
-        updated = append_to_nav(content, missing)
+    if CLUSTER_MARKER in written_body:
+        updated = append_to_cluster_list(written_body, missing)
         return updated, len(missing)
 
-    nav_html = build_nav_block(region, missing)
-    return content.rstrip() + nav_html, len(missing)
+    section_html = build_cluster_section(region, missing)
+    return written_body.rstrip() + section_html, len(missing)
 
 
 def process_pillar(
@@ -156,32 +182,49 @@ def process_pillar(
 ) -> int:
     path = ROOT / "servico" / pillar_slug / "index.html"
     html_content = path.read_text(encoding="utf-8")
-    match = ARTICLE_BLOCK.search(html_content)
-    if not match:
+    article_match = ARTICLE_BLOCK.search(html_content)
+    if not article_match:
+        return 0
+
+    article_inner = article_match.group(2)
+    cleaned_article = remove_external_cluster_nav(article_inner)
+
+    written_match = WRITTEN_CONTENT_BLOCK.search(cleaned_article)
+    if not written_match:
         return 0
 
     satellite_slugs = [slug for slug in regions[region] if slug != pillar_slug]
     satellites = [load_satellite(slug) for slug in satellite_slugs]
     satellites.sort(key=lambda item: item.title.lower())
 
-    updated_content, added = enrich_pillar_content(
-        match.group(2),
+    updated_body, added = enrich_written_content(
+        written_match.group(2),
         region,
         satellites,
         all_slugs,
     )
-    if added == 0:
+
+    updated_written = (
+        written_match.group(1) + updated_body + written_match.group(3)
+    )
+    updated_article = (
+        cleaned_article[: written_match.start()]
+        + updated_written
+        + cleaned_article[written_match.end() :]
+    )
+
+    if updated_article == article_inner:
         return 0
 
     path.write_text(
-        html_content[: match.start()]
-        + match.group(1)
-        + updated_content
-        + match.group(3)
-        + html_content[match.end() :],
+        html_content[: article_match.start()]
+        + article_match.group(1)
+        + updated_article
+        + article_match.group(3)
+        + html_content[article_match.end() :],
         encoding="utf-8",
     )
-    return added
+    return added if added else 1
 
 
 def main() -> None:
@@ -194,7 +237,7 @@ def main() -> None:
         if added:
             changed += 1
             total_links += added
-            print(f"  {pillar_slug}: +{added} link(s) a satélites")
+            print(f"  {pillar_slug}: +{added} link(s) no writen_content")
 
     print(f"\nPilares alterados: {changed}")
     print(f"Links adicionados: {total_links}")
