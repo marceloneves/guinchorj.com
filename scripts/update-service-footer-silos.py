@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = Path(__file__).resolve().parent / "regional-services.json"
 REFERENCE = ROOT / "index.html"
-ANCHOR_SLUG = "reboque-rio-de-janeiro"
+ANCHOR_SLUG = "reboque-zona-oeste"
 
 FOOTER_BLOCK = re.compile(
     r"(<h3>Serviços</h3><ul class=\"quick-links\">)(.*?)(</ul></div></div><div class=\"col-lg-3 col-md-6\"><div class=\"single-footer-widget\"><h3>Contato</h3>)",
