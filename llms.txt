@@ -1,0 +1,47 @@
+# Guincho RJ — Guincho e Reboque Rio de Janeiro
+
+> Serviço de guincho e reboque 24 horas no Rio de Janeiro e Região Metropolitana desde 1995. Atendimento por telefone e WhatsApp (21) 95954-3043.
+
+Site institucional e SEO local da Guincho RJ. Páginas por bairro, região e tipo de veículo. URLs canônicas em `https://guinchorj.com/` com barra final. Sitemap: https://guinchorj.com/sitemap_index.xml
+
+## Páginas principais
+
+- [Home](https://guinchorj.com/): Guincho e reboque 24h no Rio de Janeiro
+- [Serviços](https://guinchorj.com/servicos/): Listagem de todos os serviços de reboque
+- [Regiões](https://guinchorj.com/regioes/): Hub de regiões atendidas
+- [Regiões atendidas](https://guinchorj.com/regioes-atendidas/): Páginas por município da Baixada e entorno
+- [Contato](https://guinchorj.com/contato/): Telefone, WhatsApp e endereço
+- [Quem somos](https://guinchorj.com/quem-somos/): História e operação da empresa
+- [Perguntas frequentes](https://guinchorj.com/perguntas-frequentes-sobre-guincho-e-reboque-no-rj/): FAQ sobre guincho e reboque
+
+## Pilares regionais (serviço)
+
+- [Reboque Rio de Janeiro](https://guinchorj.com/servico/reboque-rio-de-janeiro/): Hub geral da cidade
+- [Reboque Zona Sul](https://guinchorj.com/servico/reboque-na-zona-sul-no-rj/): Cobertura da Zona Sul
+- [Reboque Zona Norte](https://guinchorj.com/servico/reboque-zona-norte-rj/): Cobertura da Zona Norte
+- [Reboque Zona Oeste](https://guinchorj.com/servico/reboque-zona-oeste/): Cobertura da Zona Oeste
+- [Reboque Centro](https://guinchorj.com/servico/reboque-no-centro-rj/): Cobertura do Centro
+- [Reboque Baixada Fluminense](https://guinchorj.com/servico/reboque-baixada-fluminense/): Baixada Fluminense
+- [Reboque Região Oceânica](https://guinchorj.com/servico/reboque-regiao-oceanica/): Niterói e entorno
+- [Reboque Região Serrana](https://guinchorj.com/servico/reboque-regiao-serrana/): Teresópolis, Petrópolis e entorno
+- [Reboque Costa Verde](https://guinchorj.com/servico/reboque-costa-verde/): Angra dos Reis, Paraty e entorno
+- [Reboque Litoral Lagos](https://guinchorj.com/servico/reboque-litoral-lagos/): Cabo Frio, Búzios e entorno
+
+## Tipos de veículo
+
+- [Reboque de caminhão](https://guinchorj.com/servico/reboque-caminhao-rj/)
+- [Reboque de moto](https://guinchorj.com/servico/reboque-de-moto-no-rj/)
+- [Reboque de ônibus](https://guinchorj.com/servico/reboque-onibus-rj/)
+- [Reboque de embarcação](https://guinchorj.com/servico/reboque-embarcacao-rj/)
+
+## Blog
+
+- [Blog](https://guinchorj.com/blog/): Artigos sobre guincho, reboque e dicas ao motorista
+- [Categoria Reboque e Guincho](https://guinchorj.com/blog/reboque-e-guincho/): Arquivo principal do blog
+
+## Optional
+
+- [Política de privacidade](https://guinchorj.com/politica-de-privacidade/)
+- [Termos de uso](https://guinchorj.com/termos-de-uso/)
+- [Política de atendimento](https://guinchorj.com/politica-de-atendimento-e-prestacao-de-servicos/)
+- [Política de segurança no transporte](https://guinchorj.com/politica-de-seguranca-no-transporte-de-veiculos/)
