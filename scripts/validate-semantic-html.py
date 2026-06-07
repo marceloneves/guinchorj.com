@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+SITE_PREFIX = "https://guinchorj.com"
 
 JSON_LD_PATTERN = re.compile(
     r'<script type="application/ld\+json">(.*?)</script>',
@@ -90,6 +91,51 @@ def node_types(node: dict) -> set[str]:
     if value is None:
         return set()
     return {str(value)}
+
+
+def site_path_from_file(path: Path) -> str:
+    rel = path.relative_to(ROOT).as_posix()
+    if rel == "index.html":
+        return "/"
+    if rel.endswith("/index.html"):
+        rel = rel[: -len("index.html")]
+    if not rel.endswith("/"):
+        rel += "/"
+    return "/" + rel
+
+
+def validate_seo_urls(html: str, path: Path, report: PageReport) -> None:
+    expected = SITE_PREFIX + site_path_from_file(path)
+
+    canonical = re.search(r'rel="canonical"\s+href="([^"]+)"', html, re.IGNORECASE)
+    if not canonical:
+        report.errors.append("canonical ausente")
+    elif not canonical.group(1).startswith("https://"):
+        report.errors.append(f"canonical não é URL absoluta: {canonical.group(1)}")
+    elif canonical.group(1) != expected:
+        report.errors.append(f"canonical incorreto: {canonical.group(1)}")
+
+    hreflang_links = re.findall(
+        r'<link[^>]*\bhreflang="[^"]+"[^>]*\bhref="([^"]+)"'
+        r'|<link[^>]*\bhref="([^"]+)"[^>]*\bhreflang="[^"]+"',
+        html,
+        re.IGNORECASE,
+    )
+    if not hreflang_links:
+        report.warnings.append("hreflang ausente")
+    else:
+        for match in hreflang_links:
+            href = match[0] or match[1]
+            if not href.startswith("https://"):
+                report.errors.append(f"hreflang não é URL absoluta: {href}")
+            elif href != expected:
+                report.errors.append(f"hreflang incorreto: {href}")
+
+    og_url = re.search(r'property="og:url"\s+content="([^"]+)"', html, re.IGNORECASE)
+    if og_url and not og_url.group(1).startswith("https://"):
+        report.errors.append(f"og:url não é URL absoluta: {og_url.group(1)}")
+    elif og_url and og_url.group(1) != expected:
+        report.errors.append(f"og:url incorreto: {og_url.group(1)}")
 
 
 def validate_json_ld(html: str, report: PageReport) -> None:
@@ -254,6 +300,7 @@ def validate_page(path: Path) -> PageReport:
     if logo_match and logo_match.group(1):
         report.warnings.append("logo com alt descritivo (esperado alt=\"\")")
 
+    validate_seo_urls(html, path, report)
     validate_json_ld(html, report)
     return report
 

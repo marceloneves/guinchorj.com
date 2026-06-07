@@ -40,6 +40,10 @@ def site_path_from_file(path: Path) -> str:
     return "/" + rel
 
 
+def absolute_url_for_file(path: Path) -> str:
+    return SITE_PREFIX + site_path_from_file(path)
+
+
 def relative_site_path(from_dir: Path, target_site_path: str) -> str:
     if target_site_path == "/":
         target_parts: list[str] = []
@@ -166,27 +170,36 @@ def replace_attr_urls(content: str, from_dir: Path, attr: str) -> str:
     return pattern.sub(repl, content)
 
 
-def replace_canonical_and_og_url(content: str, from_dir: Path) -> str:
-    patterns = [
-        re.compile(r'(rel="canonical"\s+href=")([^"]+)(")', re.IGNORECASE),
-        re.compile(r'(property="og:url"\s+content=")([^"]+)(")', re.IGNORECASE),
-    ]
+def replace_seo_tags_absolute(content: str, absolute_url: str) -> str:
+    """Canonical, og:url e hreflang devem ser URLs absolutas para SEO."""
 
-    def normalize(url: str) -> str:
-        site_path = absolutize_guinchorj(url)
-        if site_path is not None and not is_asset_path(site_path):
-            return relative_site_path(from_dir, site_path)
-        cleaned = clean_index_html_url(url)
-        if cleaned is not None:
-            return cleaned
-        return url
+    def repl_canonical(match: re.Match[str]) -> str:
+        return match.group(1) + absolute_url + match.group(3)
 
-    for pattern in patterns:
-        def repl(match: re.Match[str]) -> str:
-            return match.group(1) + normalize(match.group(2)) + match.group(3)
-
-        content = pattern.sub(repl, content)
-
+    content = re.sub(
+        r'(rel="canonical"\s+href=")([^"]+)(")',
+        repl_canonical,
+        content,
+        flags=re.IGNORECASE,
+    )
+    content = re.sub(
+        r'(property="og:url"\s+content=")([^"]+)(")',
+        repl_canonical,
+        content,
+        flags=re.IGNORECASE,
+    )
+    content = re.sub(
+        r'(<link\s+rel="alternate"\s+href=")([^"]+)("\s+hreflang="[^"]+"\s*/?>)',
+        repl_canonical,
+        content,
+        flags=re.IGNORECASE,
+    )
+    content = re.sub(
+        r'(<link\s+rel="alternate"\s+hreflang="[^"]+"\s+href=")([^"]+)("\s*/?>)',
+        repl_canonical,
+        content,
+        flags=re.IGNORECASE,
+    )
     return content
 
 
@@ -226,14 +239,15 @@ def replace_json_ld_urls(content: str, from_dir: Path) -> str:
 def process_file(path: Path) -> bool:
     original = path.read_text(encoding="utf-8")
     from_dir = page_dir(path)
+    absolute_url = absolute_url_for_file(path)
 
     updated = original
     for attr in ("href", "action"):
         updated = replace_attr_urls(updated, from_dir, attr)
 
-    updated = replace_canonical_and_og_url(updated, from_dir)
     updated = replace_json_ld_urls(updated, from_dir)
     updated = fix_json_ld_paths(updated)
+    updated = replace_seo_tags_absolute(updated, absolute_url)
 
     if updated != original:
         path.write_text(updated, encoding="utf-8")
