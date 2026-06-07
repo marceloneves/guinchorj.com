@@ -12,6 +12,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://guinchorj.com"
 MAX_ENTRIES = 100
+MAX_ENTRIES_OVERRIDES = {"servico": 1000}
 SKIP_PATHS = {"_downloads.html"}
 
 RANK_MATH_STYLESHEET = (
@@ -144,6 +145,10 @@ def sitemap_filename(base: str, page_number: int, total_pages: int) -> str:
     return f"{base}-sitemap{page_number}.xml"
 
 
+def max_entries_for(base: str) -> int:
+    return MAX_ENTRIES_OVERRIDES.get(base, MAX_ENTRIES)
+
+
 def chunk_entries(
     entries: list[SitemapEntry],
     base: str,
@@ -151,11 +156,12 @@ def chunk_entries(
     if not entries:
         return []
 
-    total_pages = max(1, (len(entries) + MAX_ENTRIES - 1) // MAX_ENTRIES)
+    limit = max_entries_for(base)
+    total_pages = max(1, (len(entries) + limit - 1) // limit)
     chunks: list[tuple[str, list[SitemapEntry]]] = []
     for page_number in range(1, total_pages + 1):
-        start = (page_number - 1) * MAX_ENTRIES
-        end = start + MAX_ENTRIES
+        start = (page_number - 1) * limit
+        end = start + limit
         chunk = entries[start:end]
         if chunk:
             chunks.append((sitemap_filename(base, page_number, total_pages), chunk))
