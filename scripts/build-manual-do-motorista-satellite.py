@@ -68,6 +68,14 @@ def fix_paths(html: str) -> str:
     return html.replace("../../../", "../../")
 
 
+def fix_nav_blog_link(html: str) -> str:
+    """Artigos em /blog/{slug}/ devem apontar o menu Blog para /blog/, não para a home."""
+    return html.replace(
+        '<a href="../../" class="nav-link">Blog</a>',
+        '<a href="../" class="nav-link">Blog</a>',
+    )
+
+
 def build_body(title: str, body_path: Path, closing_heading: str) -> str:
     raw = body_path.read_text(encoding="utf-8").strip()
     raw = re.sub(r"<h1>.*?</h1>\s*", "", raw, count=1, flags=re.DOTALL)
@@ -261,7 +269,7 @@ def build_article(
     output = ROOT / f"blog/{slug}/index.html"
     canonical = f"https://guinchorj.com/blog/{slug}/"
 
-    html = fix_paths(TEMPLATE.read_text(encoding="utf-8"))
+    html = fix_nav_blog_link(fix_paths(TEMPLATE.read_text(encoding="utf-8")))
     html = replace_head(html, title, description, canonical)
     html = replace_schema(html, title, description, canonical, short_title)
     html = inject_assets(html)

@@ -24,6 +24,7 @@ DATE = "2026-06-07"
 DATETIME = "2026-06-07T10:00:00-03:00"
 CATEGORY = "Manual do Motorista"
 CLOSING_HEADING = "Por Que Conhecer Esses Problemas Importa"
+INDEX_AFTER_MARKER = "<h2>Quais Problemas Mais Deixam um Carro Parado</h2>"
 
 SATELLITE_LINKS: dict[str, str] = {
     "Carro Não Liga": "carro-nao-liga",
@@ -209,7 +210,7 @@ def inject_satellite_links(html: str) -> str:
 def build_satellite_index() -> str:
     parts = [
         "<h2>Artigos do Manual do Motorista</h2>",
-        "<p>Explore os guias detalhados sobre cada problema abordado neste cluster:</p>",
+        "<p>Explore os guias detalhados sobre cada problema abordado neste manual:</p>",
     ]
     for group, articles in SUBCLUSTERS:
         parts.append(f"<h3>{group}</h3>")
@@ -227,13 +228,19 @@ def build_body() -> str:
     raw = format_tables(raw)
     raw = inject_satellite_links(raw)
     index = build_satellite_index()
+    if INDEX_AFTER_MARKER not in raw:
+        raise SystemExit(
+            f"Marcador do índice não encontrado: {INDEX_AFTER_MARKER}\n"
+            "Ajuste INDEX_AFTER_MARKER no script do pilar."
+        )
+    raw = raw.replace(INDEX_AFTER_MARKER, index + INDEX_AFTER_MARKER, 1)
     closing_marker = f"<h2>{CLOSING_HEADING}</h2>"
     if closing_marker not in raw:
         raise SystemExit(
             f"Seção final não encontrada: {closing_marker}\n"
             "Use um título específico, não Conclusão."
         )
-    raw = raw.replace(closing_marker, index + SERVICE_CTA + closing_marker, 1)
+    raw = raw.replace(closing_marker, SERVICE_CTA + closing_marker, 1)
     raw += COMPANY_FOOTER
     return (
         f'<p class="lead" style="text-align:center">{TITLE}</p>'
@@ -259,6 +266,14 @@ def build_section(body_html: str) -> str:
 def fix_paths(html: str) -> str:
     html = html.replace("../../../", "../../")
     return html
+
+
+def fix_nav_blog_link(html: str) -> str:
+    """Pilar em /blog/manual-do-motorista/ deve apontar o menu Blog para /blog/."""
+    return html.replace(
+        '<a href="../../" class="nav-link">Blog</a>',
+        '<a href="../" class="nav-link">Blog</a>',
+    )
 
 
 def replace_head(html: str) -> str:
@@ -398,7 +413,7 @@ def replace_schema(html: str) -> str:
 
 
 def main() -> None:
-    html = fix_paths(TEMPLATE.read_text(encoding="utf-8"))
+    html = fix_nav_blog_link(fix_paths(TEMPLATE.read_text(encoding="utf-8")))
     html = replace_head(html)
     html = replace_schema(html)
     html = inject_assets(html)
