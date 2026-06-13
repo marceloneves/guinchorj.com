@@ -1,0 +1,127 @@
+.page-title-area .blog-pills-wrap {
+  display: none;
+}
+
+.blog-pills-top {
+  display: block;
+  width: 100%;
+  clear: both;
+  background: #fff;
+  border-bottom: 1px solid #e8ebf0;
+  padding: 24px 15px 20px;
+  box-sizing: border-box;
+}
+
+.blog-pills-top .blog-pills-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.blog-pills {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  float: none !important;
+  clear: both;
+}
+
+.blog-pill {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 24px;
+  background: #eef2f6;
+  color: #222;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  float: none !important;
+  width: auto !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.page-title-area .blog-pill {
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.blog-pill:hover {
+  background: #dce8f4;
+  transform: translateY(-1px);
+}
+
+.blog-pill.is-active {
+  background: #1e73be;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(30, 115, 190, 0.28);
+}
+
+.blog-pill:focus-visible {
+  outline: 2px solid #1e73be;
+  outline-offset: 2px;
+}
+
+.blog-pills-count {
+  margin: 14px 0 0;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+
+.blog-pills-empty {
+  display: none;
+  width: 100%;
+  padding: 48px 16px;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+}
+
+.blog-pills-empty.is-visible {
+  display: block;
+}
+
+.blog-card-hidden {
+  display: none !important;
+}
+
+#blog-posts-grid > [class*="col-"].blog-card-hidden {
+  display: none !important;
+  flex: 0 0 0 !important;
+  width: 0 !important;
+  max-width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 767px) {
+  .blog-pills-top {
+    padding: 20px 0 16px;
+  }
+
+  .blog-pills {
+    gap: 8px;
+  }
+
+  .blog-pill {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+}

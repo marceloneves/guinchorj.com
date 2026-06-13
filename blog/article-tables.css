@@ -1,0 +1,105 @@
+.writen_content .table-responsive,
+.artigo-manual-do-motorista .table-responsive {
+  display: block;
+  width: fit-content;
+  max-width: min(100%, 640px);
+  min-width: 360px;
+  margin: 24px 0 28px;
+  border-radius: 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  border: 1px solid #e3e8ef;
+  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.06);
+}
+
+.writen_content .artigo-table,
+.artigo-manual-do-motorista .artigo-table {
+  width: auto;
+  min-width: 360px;
+  max-width: 100%;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  table-layout: auto;
+}
+
+.writen_content .artigo-table thead th,
+.artigo-manual-do-motorista .artigo-table thead th {
+  border: none;
+  background: linear-gradient(180deg, #1e73be 0%, #155a96 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 18px;
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+.writen_content .artigo-table thead th:first-child,
+.artigo-manual-do-motorista .artigo-table thead th:first-child {
+  border-top-left-radius: 9px;
+}
+
+.writen_content .artigo-table thead th:last-child,
+.artigo-manual-do-motorista .artigo-table thead th:last-child {
+  border-top-right-radius: 9px;
+}
+
+.writen_content .artigo-table tbody td,
+.artigo-manual-do-motorista .artigo-table tbody td {
+  padding: 11px 18px;
+  border: 1px solid #e8ebf0;
+  border-top: none;
+  color: #333;
+  vertical-align: top;
+  background: #fff;
+}
+
+.writen_content .artigo-table tbody tr:nth-child(even) td,
+.artigo-manual-do-motorista .artigo-table tbody tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+.writen_content .artigo-table tbody tr:hover td,
+.artigo-manual-do-motorista .artigo-table tbody tr:hover td {
+  background: #eef5fb;
+}
+
+.writen_content .artigo-table tbody tr:last-child td:first-child,
+.artigo-manual-do-motorista .artigo-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 9px;
+}
+
+.writen_content .artigo-table tbody tr:last-child td:last-child,
+.artigo-manual-do-motorista .artigo-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 9px;
+}
+
+@media (max-width: 767px) {
+  .writen_content .table-responsive,
+  .artigo-manual-do-motorista .table-responsive {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0 24px;
+    border-radius: 8px;
+  }
+
+  .writen_content .artigo-table,
+  .artigo-manual-do-motorista .artigo-table {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .writen_content .artigo-table thead th,
+  .writen_content .artigo-table tbody td,
+  .artigo-manual-do-motorista .artigo-table thead th,
+  .artigo-manual-do-motorista .artigo-table tbody td {
+    padding: 10px 12px;
+    font-size: 14px;
+    white-space: normal;
+  }
+}

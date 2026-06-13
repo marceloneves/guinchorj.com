@@ -12,6 +12,16 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/manual-do-motorista/bateria-descarregada",
+      "destination": "/blog/bateria-descarregada/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/manual-do-motorista/bateria-descarregada/",
+      "destination": "/blog/bateria-descarregada/",
+      "statusCode": 301
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "statusCode": 301

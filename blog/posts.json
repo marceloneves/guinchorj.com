@@ -1,0 +1,374 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "label": "Todos os artigos"
+    },
+    {
+      "id": "manual-do-motorista",
+      "label": "Manual do Motorista"
+    },
+    {
+      "id": "reboque-e-guincho",
+      "label": "Reboque e Guincho"
+    },
+    {
+      "id": "blog",
+      "label": "Artigos gerais"
+    }
+  ],
+  "posts": [
+    {
+      "title": "Alternador com Defeito: Principais Sintomas e Como Identificar o Problema",
+      "url": "alternador-com-defeito/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Descubra quais são os principais sintomas de um alternador com defeito, entenda como funciona o sistema de carga e saiba quando procurar assistência especializada.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Bateria Descarregada: Como Resolver o Problema",
+      "url": "bateria-descarregada/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Descubra como identificar uma bateria descarregada, conheça os principais sintomas e saiba o que fazer para voltar a utilizar o veículo com segurança.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Carro Descarregado Depois de Ficar Parado: Principais Causas e O Que Fazer",
+      "url": "carro-descarregado/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que um veículo pode ficar descarregado após vários dias sem uso, saiba como identificar a origem do problema e descubra quando procurar assistência especializada.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Carro Morreu em Movimento: Principais Causas e O Que Fazer",
+      "url": "carro-falhando/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Descubra por que um carro pode desligar em movimento, conheça os sintomas que antecedem o problema e saiba como agir com segurança.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Carro Não Dá Partida: Principais Causas e O Que Fazer",
+      "url": "carro-nao-liga/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Descubra por que um carro pode deixar de dar partida, conheça os sintomas mais comuns e saiba quando procurar assistência especializada.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Carro Não Reconhece a Chave: O Que Fazer e Principais Causas",
+      "url": "carro-nao-reconhece-chave/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que o carro pode deixar de reconhecer a chave, descubra os principais sintomas e saiba quando procurar assistência especializada.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Luz da Bateria Acesa no Painel: O Que Significa e O Que Fazer",
+      "url": "luz-da-bateria-acesa/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que a luz da bateria acende no painel, descubra as principais causas desse alerta e saiba quando procurar assistência especializada.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Motor Ferveu: O Que Fazer e O Que Nunca Deve Ser Feito",
+      "url": "motor-ferveu/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Descubra quais são as principais causas do superaquecimento do motor, saiba como agir corretamente e conheça os erros que podem gerar prejuízos de milhares de reais.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Pane Elétrica no Carro: Principais Causas e O Que Fazer",
+      "url": "pane-eletrica-no-carro/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda o que pode causar uma pane elétrica no carro, aprenda a identificar os principais sintomas e saiba quando procurar assistência especializada.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Manual do Motorista: Problemas Comuns no Carro e Como Resolver",
+      "url": "manual-do-motorista/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda quais são os principais problemas que podem deixar um veículo parado, saiba quando é seguro continuar dirigindo e descubra quando buscar ajuda especializada.",
+      "date": "2026-06-07T10:00:00-03:00"
+    },
+    {
+      "title": "Quanto Custa um Guincho​?",
+      "url": "reboque-e-guincho/quanto-custa-um-guincho/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Seu carro parou e a primeira pergunta é: quanto vai custar o guincho? No Rio de Janeiro, o valor de um reboque urbano simples fica em geral entre R$ 150 e R$",
+      "date": "2026-05-14T21:51:57-03:00"
+    },
+    {
+      "title": "Por que a Linha Vermelha exige atenção redobrada em caso de pane",
+      "url": "por-que-a-linha-vermelha-exige-atencao-redobrada-em-caso-de-pane/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Por ter tráfego intenso, velocidade elevada, grande circulação de caminhões, ônibus, vans, motos, carros de passeio e veículos de carga, qualquer pane na",
+      "date": "2026-05-05T16:41:07-03:00"
+    },
+    {
+      "title": "O que fazer se o carro enguiçar na Linha Amarela",
+      "url": "o-que-fazer-se-o-carro-enguicar-na-linha-amarela/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Quando o carro apresenta pane mecânica, pane elétrica, superaquecimento, pneu furado, falha na bateria ou perde força no meio do trajeto, a primeira",
+      "date": "2026-05-05T16:38:32-03:00"
+    },
+    {
+      "title": "História do Reboque e Evolução: Fascinante Jornada até 2026",
+      "url": "reboque-e-guincho/historia-do-reboque-e-sua-evolucao/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Explore a história do reboque e sua evolução fascinante! towed truck Descubra como tudo começou e se transformou. Clique e saiba mais!",
+      "date": "2026-02-02T16:46:59-03:00"
+    },
+    {
+      "title": "Cuidados ao Dirigir com Reboque: Guia Essencial 2026",
+      "url": "reboque-e-guincho/cuidados-ao-dirigir-com-reboque/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Dirija seguro com reboque! Aprenda os cuidados essenciais para uma viagem tranquila. Garanta sua segurança agora!",
+      "date": "2026-02-02T16:46:34-03:00"
+    },
+    {
+      "title": "Documentos para Reboque: Guia Completo e Sem Erros (2026)",
+      "url": "reboque-e-guincho/documentos-necessarios-para-usar-reboque/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Descubra quais os documentos necessários para usar reboque em 2025! Evite multas e viaje tranquilo. Saiba tudo agora!",
+      "date": "2026-02-02T16:46:28-03:00"
+    },
+    {
+      "title": "Como Rebocar Carro Automático Corretamente em 2026? Guia!",
+      "url": "como-rebocar-carro-automatico-corretamente/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Aprenda a rebocar carro automático corretamente e evite danos! towedcar Descubra o guia completo e proteja seu veículo. Saiba mais!",
+      "date": "2026-02-02T16:46:21-03:00"
+    },
+    {
+      "title": "Reboque de Vans e Utilitários: Seu Guia Essencial 2026!",
+      "url": "reboque-vans-utilitarios/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Precisa de reboque de vans e utilitários? Guia completo com dicas e serviços essenciais. Garanta sua segurança! Fale conosco!",
+      "date": "2026-02-02T16:46:11-03:00"
+    },
+    {
+      "title": "Reboque de Carro Batido: Como Proceder? Guia Essencial 2026",
+      "url": "reboque-carro-batido-como-proceder/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Saiba como proceder com o reboque de carro batido de forma segura e eficiente em 2025. Evite problemas! Guia completo para você.",
+      "date": "2026-02-02T16:46:02-03:00"
+    },
+    {
+      "title": "Como é feito o reboque de plataforma: Guia 2026 Essencial!",
+      "url": "como-e-feito-reboque-plataforma/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Descubra como é feito o reboque de plataforma! Guia completo sobre o processo. Aprenda tudo agora!",
+      "date": "2026-02-02T16:45:54-03:00"
+    },
+    {
+      "title": "7 cuidados reboque carro luxo 2026",
+      "url": "7-cuidados-reboque-carro-luxo/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Garanta a segurança do seu veículo! Conheça 7 cuidados essenciais para reboque de carros de luxo. Proteja seu investimento agora!",
+      "date": "2026-02-02T16:45:38-03:00"
+    },
+    {
+      "title": "Quem paga o reboque em rodovias pedagiadas? Descubra já!",
+      "url": "quem-paga-o-reboque-em-rodovias-pedagiadas/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Descubra quem paga o reboque em rodovias pedagiadas e evite surpresas! Entenda seus direitos e deveres em 2025. Saiba mais!",
+      "date": "2026-02-02T16:45:20-03:00"
+    },
+    {
+      "title": "Reboque Carros de Corrida: Guia Completo 2026!",
+      "url": "como-funciona-reboque-para-carros-de-corrida/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Descubra como funciona reboque para carros de corrida! Entenda técnicas e equipamentos essenciais. Prepare-se para a pista! Saiba mais!",
+      "date": "2026-02-02T16:45:05-03:00"
+    },
+    {
+      "title": "Evite Golpes em Reboque",
+      "url": "como-evitar-golpes-em-servicos-de-reboque/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Saiba como evitar golpes em serviços de reboque e proteja seu dinheiro! Descubra dicas cruciais para não cair em fraudes em 2025.",
+      "date": "2026-02-02T16:44:56-03:00"
+    },
+    {
+      "title": "Reboque em Enchente e Alagamento 2026: Sua Solução Rápida!",
+      "url": "reboque-em-caso-de-enchente-ou-alagamento/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Precisa de reboque em caso de enchente ou alagamento? Conte com nossa solução rápida e segura em 2025. Chame agora!",
+      "date": "2026-02-02T16:44:45-03:00"
+    },
+    {
+      "title": "Reboque de Motocicletas de Alta Cilindrada | Seu Guia 2026",
+      "url": "reboque-motocicletas-alta-cilindrada/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Precisa de reboque de motocicletas de alta cilindrada? Garanta segurança e agilidade. Saiba mais e solicite seu serviço!",
+      "date": "2026-02-02T16:44:34-03:00"
+    },
+    {
+      "title": "Reboque de Empilhadeiras e Máquinas Industriais | Guia 2026",
+      "url": "reboque-empilhadeiras-maquinas-industriais/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Precisa de reboque de empilhadeiras e máquinas industriais? Encontre soluções seguras e eficientes. Saiba mais agora!",
+      "date": "2026-02-02T16:44:20-03:00"
+    },
+    {
+      "title": "Reboque para Veículos 4&#215;4 Off Road: Aventura Extrema!",
+      "url": "reboque-veiculos-4x4-off-road-aventura/",
+      "category": "blog",
+      "categoryLabel": "Artigos gerais",
+      "excerpt": "Prepare-se para o off road! Encontre o reboque para veículos 4x4 off road ideal. Segurança e aventura garantidas! Compre já!",
+      "date": "2026-02-02T16:43:45-03:00"
+    },
+    {
+      "title": "Como Funciona o Sistema de Freio de Reboque?",
+      "url": "reboque-e-guincho/como-funciona-sistema-freio-reboque/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Desvende como funciona o sistema de freio de reboque! Garanta segurança na estrada. Aprenda agora!",
+      "date": "2025-10-20T05:31:33-03:00"
+    },
+    {
+      "title": "Como Escolher o Melhor Reboque Para Moto?",
+      "url": "reboque-e-guincho/como-escolher-o-melhor-reboque-para-moto/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Não erre! Saiba como escolher o melhor reboque para moto com nosso guia completo. Dicas essenciais para sua segurança. Confira agora!",
+      "date": "2025-10-20T05:31:12-03:00"
+    },
+    {
+      "title": "O que é Reboque e Como Funciona?",
+      "url": "reboque-e-guincho/o-que-e-reboque-e-como-funciona/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Descubra o que é reboque e como funciona! Entenda tudo sobre o serviço de guincho e transporte. Saiba mais agora!",
+      "date": "2025-10-20T05:28:20-03:00"
+    },
+    {
+      "title": "Qual é a Diferença Entre Reboque e Semirreboque​?",
+      "url": "reboque-e-guincho/diferenca-reboque-semirreboque/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Você certamente já cruzou com gigantes do asfalto nas estradas, mas já parou para pensar na engenharia por trás deles?",
+      "date": "2025-10-20T05:12:30-03:00"
+    },
+    {
+      "title": "Legislação sobre Reboque no Brasil: Desvende AGORA! 2025",
+      "url": "reboque-e-guincho/legislacao-sobre-reboque-no-brasil/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Desvende a legislação sobre reboque no Brasil em 2025! Entenda as regras e evite multas. Saiba mais agora!",
+      "date": "2025-10-20T05:03:00-03:00"
+    },
+    {
+      "title": "Engatar Reboque Corretamente: Guia Completo e Seguro",
+      "url": "reboque-e-guincho/como-engatar-um-reboque/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Aprenda como engatar um reboque corretamente e com segurança! Evite multas e acidentes. Guia passo a passo para 2025. Comece já!",
+      "date": "2025-10-20T05:00:55-03:00"
+    },
+    {
+      "title": "Limite de Peso para Reboque de Carros de Passeio",
+      "url": "reboque-e-guincho/limite-peso-reboque-carros-passeio/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Descubra o limite de peso para reboque de carros de passeio em 2025! Evite multas e viaje seguro. Saiba tudo aqui!",
+      "date": "2025-10-20T04:56:01-03:00"
+    },
+    {
+      "title": "Tipos de Engate para Reboque",
+      "url": "reboque-e-guincho/tipos-engate-reboque-veiculos/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Descubra os melhores tipos de engate para reboque de veículos! Escolha certo e viaje seguro. Saiba mais e garanta o seu!",
+      "date": "2025-10-20T04:50:32-03:00"
+    },
+    {
+      "title": "O Que é Capacidade de Reboque?",
+      "url": "reboque-e-guincho/o-que-e-capacidade-de-reboque-veiculo/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Descubra o que é a capacidade de reboque de um veículo! Saiba tudo sobre o tema e evite problemas. Aprenda agora!",
+      "date": "2025-10-20T04:38:04-03:00"
+    },
+    {
+      "title": "Como Instalar Sinalização em Reboque: Guia Seguro 2025",
+      "url": "reboque-e-guincho/como-instalar-sinalizacao-em-reboque/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Aprenda como instalar sinalização em reboque de forma segura e fácil! Evite multas e acidentes. Clique e veja o guia completo!",
+      "date": "2025-10-20T04:32:43-03:00"
+    },
+    {
+      "title": "Vantagens de Ter um Reboque Engate",
+      "url": "reboque-e-guincho/vantagens-de-ter-um-reboque-engate/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Descubra as vantagens de ter um reboque engate para seu carro! Transporte tudo com segurança e praticidade. Saiba mais!",
+      "date": "2025-10-20T04:23:05-03:00"
+    },
+    {
+      "title": "Como Retirar Carro que Foi Guinchado no RJ",
+      "url": "reboque-e-guincho/retirar-carro-guinchado-rj/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Descobrir que seu carro foi guinchado já é estressante, mas agora vem a parte que realmente confunde todo mundo: como retirar o carro do pátio. A verdade é",
+      "date": "2025-10-20T03:56:28-03:00"
+    },
+    {
+      "title": "Multa por Reboque Irregular: Descubra o Valor em 2025! 🚨",
+      "url": "reboque-e-guincho/multa-reboque-irregular/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Saiba qual é a multa por reboque irregular e evite surpresas indesejadas em 2025. Entenda as infrações e valores agora!",
+      "date": "2025-10-20T03:56:26-03:00"
+    },
+    {
+      "title": "Tipos de Reboque para Carros: Guia Completo 2025!",
+      "url": "reboque-e-guincho/tipos-reboque-carro/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Descubra os principais tipos de reboque para carros! Escolha o ideal para sua necessidade com nosso guia completo. Saiba mais!",
+      "date": "2025-10-20T03:56:22-03:00"
+    },
+    {
+      "title": "Reboque para Barco: Guia Completo e Seguro em 2025!",
+      "url": "reboque-e-guincho/reboque-para-barco-guia-completo-seguro/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Transporte seu barco com segurança! Encontre o reboque ideal para barco e garanta viagens tranquilas em 2025. Saiba mais!",
+      "date": "2025-10-20T03:56:20-03:00"
+    },
+    {
+      "title": "Como Saber se o Carro Foi Guinchado no Rio de Janeiro",
+      "url": "reboque-e-guincho/carro-guinchado-no-rio-de-janeiro/",
+      "category": "reboque-e-guincho",
+      "categoryLabel": "Reboque e Guincho",
+      "excerpt": "Você chegou onde estacionou e seu carro simplesmente sumiu? Calma, respire fundo! De acordo com dados da Secretaria Municipal de Ordem Pública (SEOP), mais de",
+      "date": "2025-10-19T10:00:47-03:00"
+    }
+  ]
+}
