@@ -35,6 +35,14 @@
       "date": "2026-06-07T12:00:00-03:00"
     },
     {
+      "title": "Carro Consumindo Muito Combustível: Principais Causas e O Que Fazer",
+      "url": "carro-consumindo-muito-combustivel/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Descubra por que o consumo de combustível pode aumentar, conheça as causas mais comuns e saiba quais problemas merecem atenção para evitar gastos desnecessários e danos ao motor.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
       "title": "Carro Descarregado Depois de Ficar Parado: Principais Causas e O Que Fazer",
       "url": "carro-descarregado/",
       "category": "manual-do-motorista",
@@ -43,11 +51,35 @@
       "date": "2026-06-07T12:00:00-03:00"
     },
     {
+      "title": "Carro Engasgando: Principais Causas e O Que Fazer",
+      "url": "carro-engasgando/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que um carro pode começar a engasgar, descubra as causas mais comuns e saiba quando o problema exige atenção imediata para evitar uma pane mais grave.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
       "title": "Carro Morreu em Movimento: Principais Causas e O Que Fazer",
       "url": "carro-falhando/",
       "category": "manual-do-motorista",
       "categoryLabel": "Manual do Motorista",
       "excerpt": "Descubra por que um carro pode desligar em movimento, conheça os sintomas que antecedem o problema e saiba como agir com segurança.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Carro Falhando em Marcha Lenta: Principais Causas e O Que Fazer",
+      "url": "carro-falhando-marcha-lenta/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que o carro pode apresentar falhas em marcha lenta, descubra as causas mais comuns e saiba quando o problema pode indicar uma pane mais séria.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Carro Morrendo Sozinho: Principais Causas e O Que Fazer",
+      "url": "carro-morrendo-sozinho/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que um carro pode desligar sozinho durante a condução ou quando está parado, descubra as principais causas e saiba quando a situação exige atenção imediata para evitar uma pane completa.",
       "date": "2026-06-07T12:00:00-03:00"
     },
     {
@@ -67,11 +99,43 @@
       "date": "2026-06-07T12:00:00-03:00"
     },
     {
+      "title": "Carro Perdendo Potência: Principais Causas e O Que Fazer",
+      "url": "carro-perdendo-potencia/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que um carro pode perder potência, descubra os sintomas que indicam problemas mecânicos ou eletrônicos e saiba quando é necessário procurar assistência especializada.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Carro Vibrando Muito: Principais Causas e O Que Fazer",
+      "url": "carro-vibrando/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que um carro pode começar a vibrar excessivamente, descubra quais componentes estão mais associados ao problema e saiba quando a situação exige atenção imediata.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Carro Soltando Fumaça pelo Escapamento: O Que Significa e O Que Fazer",
+      "url": "fumaca-saindo-do-motor/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Descubra por que o carro pode começar a soltar fumaça pelo escapamento, entenda o significado das diferentes cores e saiba quando a situação exige atenção imediata para evitar danos mais graves ao motor.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
       "title": "Luz da Bateria Acesa no Painel: O Que Significa e O Que Fazer",
       "url": "luz-da-bateria-acesa/",
       "category": "manual-do-motorista",
       "categoryLabel": "Manual do Motorista",
       "excerpt": "Entenda por que a luz da bateria acende no painel, descubra as principais causas desse alerta e saiba quando procurar assistência especializada.",
+      "date": "2026-06-07T12:00:00-03:00"
+    },
+    {
+      "title": "Luz da Injeção Eletrônica Acesa: O Que Significa e O Que Fazer",
+      "url": "luz-da-injecao-acesa/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda por que a luz da injeção eletrônica acende no painel, descubra as principais causas e saiba quando é possível continuar dirigindo ou quando é necessário procurar assistência especializada.",
       "date": "2026-06-07T12:00:00-03:00"
     },
     {
