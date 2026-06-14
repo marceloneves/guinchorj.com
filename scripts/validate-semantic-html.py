@@ -43,8 +43,9 @@ class PageReport:
 
 def iter_html_files() -> list[Path]:
     files: list[Path] = []
+    excluded_dirs = {"wp-content", "node_modules", "scripts", "docs", ".git"}
     for path in sorted(ROOT.rglob("*.html")):
-        if "wp-content" in path.parts:
+        if excluded_dirs & set(path.parts):
             continue
         if path.name == "_downloads.html":
             continue
