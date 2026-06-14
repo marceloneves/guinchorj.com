@@ -196,10 +196,16 @@ def inject_assets(html: str) -> str:
     return html.replace("</head>", assets + "</head>", 1)
 
 
+def slug_exists(slug: str) -> bool:
+    return (ROOT / f"blog/{slug}/index.html").exists()
+
+
 def inject_satellite_links(html: str) -> str:
     links = {**SATELLITE_LINKS, **SATELLITE_ALIASES}
     for title in sorted(links, key=len, reverse=True):
         slug = links[title]
+        if not slug_exists(slug):
+            continue
         href = f"../{slug}/"
         for tag in ("h2", "h3"):
             pattern = rf"<{tag}>{re.escape(title)}</{tag}>"
@@ -219,9 +225,12 @@ def build_satellite_index() -> str:
         parts.append(f"<h3>{group}</h3>")
         parts.append("<ul>")
         for title, slug in articles:
-            parts.append(
-                f'<li><a href="../{slug}/" title="{title}">{title}</a></li>'
-            )
+            if slug_exists(slug):
+                parts.append(
+                    f'<li><a href="../{slug}/" title="{title}">{title}</a></li>'
+                )
+            else:
+                parts.append(f"<li>{title}</li>")
         parts.append("</ul>")
     return "\n".join(parts) + "\n"
 

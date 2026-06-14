@@ -68,6 +68,11 @@ def fix_paths(html: str) -> str:
     return html.replace("../../../", "../../")
 
 
+def fix_cross_article_links(html: str) -> str:
+    """Em /blog/{slug}/, links ./outro-slug/ devem ser ../outro-slug/."""
+    return re.sub(r'href="\./([^"/][^"]*)/"', r'href="../\1/"', html)
+
+
 def fix_nav_blog_link(html: str) -> str:
     """Artigos em /blog/{slug}/ devem apontar o menu Blog para /blog/, não para a home."""
     return html.replace(
@@ -79,6 +84,7 @@ def fix_nav_blog_link(html: str) -> str:
 def build_body(title: str, body_path: Path, closing_heading: str) -> str:
     raw = body_path.read_text(encoding="utf-8").strip()
     raw = re.sub(r"<h1>.*?</h1>\s*", "", raw, count=1, flags=re.DOTALL)
+    raw = fix_cross_article_links(raw)
     raw = format_tables(raw)
     closing_marker = f"<h2>{closing_heading}</h2>"
     if closing_marker not in raw:
@@ -169,7 +175,7 @@ def replace_page_title(main: str, title: str, short_title: str) -> str:
         '<li class="breadcrumb-item"><a title="Guincho e Reboque Rio de Janeiro" href="../../">'
         "<span>Guincho e Reboque Rio de Janeiro</span></a></li>"
         '<li class="breadcrumb-item"><a title="Blog" href="../"><span>Blog</span></a></li>'
-        f'<li class="breadcrumb-item"><a title="{CLUSTER_TITLE}" href="./manual-do-motorista/">'
+        f'<li class="breadcrumb-item"><a title="{CLUSTER_TITLE}" href="../manual-do-motorista/">'
         f"<span>{CLUSTER_TITLE}</span></a></li>"
         f'<li class="breadcrumb-item active" aria-current="page">'
         f'<a title="{short_title}" href="./"><span>{short_title}</span></a></li>'
