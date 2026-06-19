@@ -22,6 +22,26 @@
       "statusCode": 301
     },
     {
+      "source": "/servico/reboque-guadalupe",
+      "destination": "/servico/reboque-guadalupe-rj/",
+      "statusCode": 301
+    },
+    {
+      "source": "/servico/reboque-guadalupe/",
+      "destination": "/servico/reboque-guadalupe-rj/",
+      "statusCode": 301
+    },
+    {
+      "source": "/regioes-atendidas/queimados",
+      "destination": "/servico/reboque-em-queimados/",
+      "statusCode": 301
+    },
+    {
+      "source": "/regioes-atendidas/queimados/",
+      "destination": "/servico/reboque-em-queimados/",
+      "statusCode": 301
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "statusCode": 301
