@@ -19,6 +19,94 @@
   ],
   "posts": [
     {
+      "title": "Pode Comer Dirigindo? O Que Diz a Lei",
+      "url": "pode-comer-dirigindo/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Comer dirigindo dá multa? Veja o que diz o Código de Trânsito Brasileiro, quando o hábito pode gerar autuação pelo artigo 252 e quais alimentos oferecem mais risco.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Pode Dirigir de Chinelo? Entenda as Regras",
+      "url": "pode-dirigir-de-chinelo/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Dirigir de chinelo é proibido? Veja o que diz o artigo 252 do CTB, quando o chinelo pode gerar multa e por que dirigir descalço costuma ser mais seguro.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Pode Dirigir Sem Camisa? O Que Diz a Lei",
+      "url": "pode-dirigir-sem-camisa/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Dirigir sem camisa dá multa? Entenda o que diz o Código de Trânsito Brasileiro, por que não há infração para carros e como ficam as regras para motociclistas.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Pode Dormir Dentro do Carro na Rua? O Que Diz a Lei",
+      "url": "pode-dormir-dentro-do-carro-na-rua/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Dormir dentro do carro estacionado na rua é permitido? Veja o que diz a legislação, quando o estacionamento pode gerar multa e como descansar com mais segurança.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Pode Fumar Dirigindo? O Que Diz a Lei",
+      "url": "pode-fumar-dirigindo/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Fumar dirigindo dá multa? Veja o que diz o Código de Trânsito Brasileiro, quando o hábito pode gerar autuação pelo artigo 252 e por que aumenta os riscos no trânsito.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Pode Transportar Cachorro Solto no Carro? O Que Diz a Lei",
+      "url": "pode-transportar-cachorro-solto-no-carro/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Transportar cachorro solto no carro dá multa? Veja o que diz o artigo 252 do CTB, por que levar o cão no colo é infração e qual a forma mais segura de transportar o pet.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Pode Transportar Criança no Banco da Frente? O Que Diz a Lei",
+      "url": "pode-transportar-crianca-no-banco-da-frente/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Criança pode andar no banco da frente? Veja o que diz o CTB, a regra dos 10 anos e 1,45 m, quando há multa e por que o banco traseiro é mais seguro.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Pode Usar Celular no Semáforo? O Que Diz a Lei",
+      "url": "pode-usar-celular-no-semaforo/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Usar o celular parado no sinal vermelho dá multa? Veja o que diz o artigo 252 do CTB, por que o semáforo não elimina a infração e quais alternativas são seguras.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Pode Usar Fone de Ouvido Dirigindo? O Que Diz a Lei",
+      "url": "pode-usar-fone-de-ouvido-dirigindo/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Usar fone de ouvido dirigindo é proibido? Veja o que diz o artigo 252 do CTB, por que vale também para fones Bluetooth e quais alternativas são mais seguras.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Posso Dirigir Descalço? O Que Diz a Lei",
+      "url": "posso-dirigir-descalco/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Dirigir descalço é permitido no Brasil? Entenda o que diz o artigo 252 do CTB, quando o calçado pode gerar multa e por que pode ser mais seguro que dirigir de chinelo.",
+      "date": "2026-06-19T12:00:00-03:00"
+    },
+    {
+      "title": "Manual do Motorista: Problemas Comuns no Carro e Como Resolver",
+      "url": "manual-do-motorista/",
+      "category": "manual-do-motorista",
+      "categoryLabel": "Manual do Motorista",
+      "excerpt": "Entenda quais são os principais problemas que podem deixar um veículo parado, saiba quando é seguro continuar dirigindo e descubra quando buscar ajuda especializada.",
+      "date": "2026-06-19T10:00:00-03:00"
+    },
+    {
       "title": "Água no Motor Após Alagamentos: Principais Causas e O Que Fazer",
       "url": "agua-no-motor/",
       "category": "manual-do-motorista",
@@ -321,14 +409,6 @@
       "categoryLabel": "Manual do Motorista",
       "excerpt": "Entenda por que o volante pode ficar pesado, descubra as principais causas do problema e saiba quando a situação exige atenção imediata para preservar a segurança e evitar danos maiores.",
       "date": "2026-06-07T12:00:00-03:00"
-    },
-    {
-      "title": "Manual do Motorista: Problemas Comuns no Carro e Como Resolver",
-      "url": "manual-do-motorista/",
-      "category": "manual-do-motorista",
-      "categoryLabel": "Manual do Motorista",
-      "excerpt": "Entenda quais são os principais problemas que podem deixar um veículo parado, saiba quando é seguro continuar dirigindo e descubra quando buscar ajuda especializada.",
-      "date": "2026-06-07T10:00:00-03:00"
     },
     {
       "title": "Quanto Custa um Guincho​?",

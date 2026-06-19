@@ -123,14 +123,39 @@ Todo o cluster fica na categoria **`manual-do-motorista`**.
 
 ---
 
+## Subcluster 8 — Direitos e Obrigações do Motorista
+
+Conteúdo focado em legislação de trânsito (CTB): o que o motorista pode ou não fazer ao volante.
+
+| Título | Slug |
+|--------|------|
+| Posso Dirigir Descalço? O Que Diz a Lei | `posso-dirigir-descalco` |
+| Pode Dirigir de Chinelo? Entenda as Regras | `pode-dirigir-de-chinelo` |
+| Pode Dirigir Sem Camisa? | `pode-dirigir-sem-camisa` |
+| Pode Fumar Dirigindo? | `pode-fumar-dirigindo` |
+| Pode Comer Dirigindo? | `pode-comer-dirigindo` |
+| Pode Usar Fone de Ouvido Dirigindo? | `pode-usar-fone-de-ouvido-dirigindo` |
+| Pode Usar Celular no Semáforo? | `pode-usar-celular-no-semaforo` |
+| Pode Dormir Dentro do Carro na Rua? | `pode-dormir-dentro-do-carro-na-rua` |
+| Pode Transportar Cachorro Solto no Carro? | `pode-transportar-cachorro-solto-no-carro` |
+| Pode Transportar Criança no Banco da Frente? | `pode-transportar-crianca-no-banco-da-frente` |
+
+**Status:** seção incluída no corpo do artigo pilar (`/blog/manual-do-motorista/`) em 19/06/2026.
+
+**Status dos satélites:** seção completa — os 10 artigos foram publicados em 19/06/2026 (`posso-dirigir-descalco`, `pode-dirigir-de-chinelo`, `pode-dirigir-sem-camisa`, `pode-fumar-dirigindo`, `pode-comer-dirigindo`, `pode-usar-fone-de-ouvido-dirigindo`, `pode-usar-celular-no-semaforo`, `pode-dormir-dentro-do-carro-na-rua`, `pode-transportar-cachorro-solto-no-carro`, `pode-transportar-crianca-no-banco-da-frente`).
+
+> Nota: o gerador `build-manual-do-motorista-satellite.py` grava data fixa 07/06/2026. Os satélites desta seção foram redatados para 19/06/2026 (data real de publicação) com substituição pós-geração no HTML.
+
+---
+
 ## Resumo quantitativo
 
 | Item | Quantidade |
 |------|------------|
 | Artigo pilar | 1 |
-| Subclusters | 7 |
-| Artigos satélite | 30 |
-| **Total de conteúdos** | **31** |
+| Subclusters | 8 |
+| Artigos satélite | 40 |
+| **Total de conteúdos** | **41** |
 
 ---
 
