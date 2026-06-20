@@ -79,8 +79,9 @@ def render_card(post: dict[str, str]) -> str:
         f'<article class="col-lg-6 col-md-6" data-category="{category}">'
         f'<div class="single-blog"><div class="image">'
         f'<a href="{url}" title="{title}"> '
-        f'<figure class="box-image-post" style="display:flex;align-items:center;justify-content:center;height:401px;">'
-        f'<i class="fa fa-file-image-o" aria-hidden="true"></i></figure> '
+        f'<figure class="box-image-post" style="height:401px;overflow:hidden;">'
+        f'<img src="../wp-content/uploads/2026/06/hero-guinchorj.webp" alt="{title}" '
+        f'loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;"></figure> '
         f"</a></div><div class=\"content\">"
         f'<h2 class="entry-title" style="text-align:center;height:113px;display:flex;align-items:center;justify-content:center;">'
         f'<a href="{url}" title="{title}">{title}</a></h2>'
