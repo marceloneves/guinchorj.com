@@ -212,6 +212,41 @@ def hide_pagination(html_content: str) -> str:
     )
 
 
+PAGINATION_CSS = (
+    '<!-- blog-pag --><style>.blog-pag{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:30px 0 0}'
+    '.blog-pag button{min-width:42px;height:42px;border:1px solid #d7dde3;background:#fff;color:#1e73be;border-radius:8px;'
+    'font-weight:600;cursor:pointer;padding:0 12px}.blog-pag button:hover{background:#f0f6fc}'
+    '.blog-pag button.is-active{background:#1e73be;color:#fff;border-color:#1e73be}'
+    '.blog-pag button[disabled]{opacity:.4;cursor:default}</style>'
+)
+PAGINATION_JS = (
+    '<!-- blog-pag-js --><script>(function(){"use strict";var PER=12,page=1;'
+    'function grid(){return document.getElementById("blog-posts-grid");}'
+    'function vis(){var g=grid();if(!g)return[];return Array.prototype.slice.call(g.querySelectorAll("[data-category]")).filter(function(c){return !c.classList.contains("blog-card-hidden");});}'
+    'function nav(total){var g=grid();if(!g)return;var pages=Math.max(1,Math.ceil(total/PER));'
+    'var el=document.getElementById("blog-pag");if(!el){el=document.createElement("div");el.id="blog-pag";el.className="blog-pag";g.parentNode.appendChild(el);}'
+    'if(pages<=1){el.innerHTML="";return;}var hbtml="";'
+    "hbtml+='<button '+(page<=1?\"disabled\":\"\")+' data-go=\"'+(page-1)+'\">\\u2039</button>';"
+    "for(var i=1;i<=pages;i++){hbtml+='<button class=\"'+(i===page?\"is-active\":\"\")+'\" data-go=\"'+i+'\">'+i+'</button>';}"
+    "hbtml+='<button '+(page>=pages?\"disabled\":\"\")+' data-go=\"'+(page+1)+'\">\\u203a</button>';el.innerHTML=hbtml;"
+    'el.querySelectorAll("button[data-go]").forEach(function(b){b.addEventListener("click",function(){var n=parseInt(b.getAttribute("data-go"),10);if(n>=1&&n<=pages){page=n;render();var t=document.querySelector(".blog-pills-top")||g;if(t&&t.scrollIntoView)t.scrollIntoView({behavior:"smooth"});}});});}'
+    'function render(){var cards=vis();var pages=Math.max(1,Math.ceil(cards.length/PER));if(page>pages)page=pages;'
+    'cards.forEach(function(c,i){var on=i>=(page-1)*PER&&i<page*PER;if(on){c.style.removeProperty("display");}else{c.style.setProperty("display","none","important");}});nav(cards.length);}'
+    'var orig=window.blogFilterClick;window.blogFilterClick=function(f,p){var r=orig?orig(f,p):undefined;page=1;render();return r;};'
+    'function init(){page=1;render();}'
+    'if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){setTimeout(init,60);});}else{setTimeout(init,60);}'
+    'document.addEventListener("rocket-DOMContentLoaded",function(){setTimeout(init,60);});window.addEventListener("load",function(){setTimeout(init,80);});})();</script>'
+)
+
+
+def inject_pagination(html_content: str) -> str:
+    if "blog-pag" not in html_content:
+        html_content = html_content.replace("</head>", PAGINATION_CSS + "</head>", 1)
+    if "blog-pag-js" not in html_content:
+        html_content = html_content.replace("</body>", PAGINATION_JS + "</body>", 1)
+    return html_content
+
+
 def main() -> None:
     posts = load_posts()
     html_content = BLOG_INDEX.read_text(encoding="utf-8")
@@ -221,6 +256,7 @@ def main() -> None:
     html_content = clean_head(html_content)
     html_content = inject_head_script(html_content)
     html_content = inject_body_script(html_content)
+    html_content = inject_pagination(html_content)
     BLOG_INDEX.write_text(html_content, encoding="utf-8")
     print(f"blog/index.html reconstruído com {len(posts)} artigos e filtro por bolhas.")
 
