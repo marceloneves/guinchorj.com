@@ -9,6 +9,8 @@ DirectoryIndex index.html
 
     RewriteRule ^servico/reboque-guadalupe/?$ /servico/reboque-guadalupe-rj/ [R=301,L,NE]
 
+    RewriteRule ^servico/reboque-na-gloria-no-rj/?$ /servico/reboque-saude-rj/ [R=301,L,NE]
+
     RewriteRule ^regioes-atendidas/queimados/?$ /servico/reboque-em-queimados/ [R=301,L,NE]
 
     # Redireciona /pagina/index.html para /pagina/

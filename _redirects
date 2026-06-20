@@ -4,5 +4,7 @@
 /servico/reboque-guadalupe/ /servico/reboque-guadalupe-rj/ 301
 /regioes-atendidas/queimados /servico/reboque-em-queimados/ 301
 /regioes-atendidas/queimados/ /servico/reboque-em-queimados/ 301
+/servico/reboque-na-gloria-no-rj /servico/reboque-saude-rj/ 301
+/servico/reboque-na-gloria-no-rj/ /servico/reboque-saude-rj/ 301
 /index.html / 301
 /*/index.html /:splat/ 301
