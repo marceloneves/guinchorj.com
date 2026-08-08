@@ -207,6 +207,26 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/7-dicas-para-contratar-servico-de-reboque-sem-dor-de-cabeca/:path*/",
+      "destination": "/blog/como-evitar-golpes-em-servicos-de-reboque/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-carros-tunados/:path*/",
+      "destination": "/blog/como-funciona-reboque-para-carros-de-corrida/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/:path*/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*/index.html/",
+      "destination": "/:path*/",
+      "statusCode": 301
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "statusCode": 301
@@ -221,10 +241,22 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=()"
+        }
       ]
     }
   ]
