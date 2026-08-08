@@ -52,6 +52,161 @@
       "statusCode": 301
     },
     {
+      "source": "/servico",
+      "destination": "/servicos/",
+      "statusCode": 301
+    },
+    {
+      "source": "/servico/",
+      "destination": "/servicos/",
+      "statusCode": 301
+    },
+    {
+      "source": "/servico/reboque-no-jardim-botanico-rj",
+      "destination": "/servico/reboque-no-jardim-botanico/",
+      "statusCode": 301
+    },
+    {
+      "source": "/servico/reboque-no-jardim-botanico-rj/",
+      "destination": "/servico/reboque-no-jardim-botanico/",
+      "statusCode": 301
+    },
+    {
+      "source": "/servico/reboque-zona-norte",
+      "destination": "/servico/reboque-zona-norte-rj/",
+      "statusCode": 301
+    },
+    {
+      "source": "/servico/reboque-zona-norte/",
+      "destination": "/servico/reboque-zona-norte-rj/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-linha-amarela",
+      "destination": "/blog/o-que-fazer-se-o-carro-enguicar-na-linha-amarela/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-linha-amarela/",
+      "destination": "/blog/o-que-fazer-se-o-carro-enguicar-na-linha-amarela/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-linha-vermelha",
+      "destination": "/blog/por-que-a-linha-vermelha-exige-atencao-redobrada-em-caso-de-pane/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-linha-vermelha/",
+      "destination": "/blog/por-que-a-linha-vermelha-exige-atencao-redobrada-em-caso-de-pane/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-dutra",
+      "destination": "/blog/quem-paga-o-reboque-em-rodovias-pedagiadas/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-dutra/",
+      "destination": "/blog/quem-paga-o-reboque-em-rodovias-pedagiadas/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-ponte-rio-niteroi",
+      "destination": "/blog/quem-paga-o-reboque-em-rodovias-pedagiadas/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-ponte-rio-niteroi/",
+      "destination": "/blog/quem-paga-o-reboque-em-rodovias-pedagiadas/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-transolimpica",
+      "destination": "/blog/carro-morreu-no-transito/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-transolimpica/",
+      "destination": "/blog/carro-morreu-no-transito/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-avenida-brasil",
+      "destination": "/blog/carro-morreu-no-transito/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/carro-quebrou-avenida-brasil/",
+      "destination": "/blog/carro-morreu-no-transito/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/legislacao-reboque-trailers-carretas",
+      "destination": "/blog/reboque-e-guincho/legislacao-sobre-reboque-no-brasil/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/legislacao-reboque-trailers-carretas/",
+      "destination": "/blog/reboque-e-guincho/legislacao-sobre-reboque-no-brasil/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/7-dicas-para-contratar-servico-de-reboque-sem-dor-de-cabeca/:path*",
+      "destination": "/blog/como-evitar-golpes-em-servicos-de-reboque/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-carros-tunados/:path*",
+      "destination": "/blog/como-funciona-reboque-para-carros-de-corrida/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-e-guincho/page/5",
+      "destination": "/blog/reboque-e-guincho/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-e-guincho/page/5/",
+      "destination": "/blog/reboque-e-guincho/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-e-guincho/page/6",
+      "destination": "/blog/reboque-e-guincho/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-e-guincho/page/6/",
+      "destination": "/blog/reboque-e-guincho/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-e-guincho/page/7",
+      "destination": "/blog/reboque-e-guincho/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-e-guincho/page/7/",
+      "destination": "/blog/reboque-e-guincho/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-e-guincho/page/8",
+      "destination": "/blog/reboque-e-guincho/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reboque-e-guincho/page/8/",
+      "destination": "/blog/reboque-e-guincho/",
+      "statusCode": 301
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "statusCode": 301
