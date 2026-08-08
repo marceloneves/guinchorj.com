@@ -3,12 +3,12 @@
   "redirects": [
     {
       "source": "/servico/reboque-rio-de-janeiro",
-      "destination": "/",
+      "destination": "/reboque-rio-de-janeiro/",
       "statusCode": 301
     },
     {
       "source": "/servico/reboque-rio-de-janeiro/",
-      "destination": "/",
+      "destination": "/reboque-rio-de-janeiro/",
       "statusCode": 301
     },
     {
