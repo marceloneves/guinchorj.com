@@ -9,6 +9,7 @@ Sitemaps: https://guinchorj.com/sitemap_index.xml (post, page, regiões atendida
 ## Páginas principais
 
 - [Home](https://guinchorj.com/): Guincho e reboque 24h no Rio de Janeiro
+- [Reboque no Rio de Janeiro](https://guinchorj.com/reboque-rio-de-janeiro/): Página principal do serviço na cidade do Rio — cobertura por zona, preço a partir de R$ 150, tempo de chegada e situações que exigem avaliação prévia
 - [Serviços](https://guinchorj.com/servicos/): Listagem de todos os serviços de reboque
 - [Regiões](https://guinchorj.com/regioes/): Hub de regiões atendidas
 - [Regiões atendidas](https://guinchorj.com/regioes-atendidas/): Páginas por município da Baixada e entorno
