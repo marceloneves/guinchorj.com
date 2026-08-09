@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 	<Document>
-		<name>Locations for Guincho e Reboque Rio de Janeiro</name>
+		<name>Locations for Guincho RJ</name>
 		<open>1</open>
 		<Folder>
 			<atom:link href="https://guinchorj.com/" />
 			<Placemark>
-				<name><![CDATA[Guincho e Reboque Rio de Janeiro]]></name>
-				<description><![CDATA[Confira nossos serviços de Guincho e Reboque no Rio de Janeiro com alta qualidade, tecnologia e atendimento de primeira linha para você e sua família. Chegamos em 15 min.]]></description>
-				<address><![CDATA[Avenida Presidente Vargas 1120 — Centro - CEP 20071-002, Rio de Janeiro, Rio de Janeiro, 20071-002, BR]]></address>
+				<name><![CDATA[Guincho RJ]]></name>
+				<description><![CDATA[Guincho RJ: empresa de guincho e assistência veicular 24h desde 1995. Base no Centro, Av. Presidente Vargas 1120. Carros, motos, vans, caminhões.]]></description>
+				<address><![CDATA[Avenida Presidente Vargas, 1120 — Centro, Rio de Janeiro, RJ, 20071-002, BR]]></address>
 				<phoneNumber><![CDATA[+55-21-95954-3043]]></phoneNumber>
 				<atom:link href="https://guinchorj.com/"/>
 				<LookAt>
