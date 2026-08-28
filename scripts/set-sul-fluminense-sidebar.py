@@ -26,8 +26,16 @@ SILO = [
     ('reboque-em-paraty', 'Reboque em Paraty'),
 ]
 
-# paginas que recebem o menu (Angra e Paraty ficam no silo da Costa Verde)
-TARGETS = [s for s, _ in SILO if s not in ('reboque-em-angra-dos-reis', 'reboque-em-paraty')]
+# Angra e Paraty sao Sul Fluminense e litoral: recebem o menu do silo e
+# mantem, no topo, o hub e os vizinhos da Costa Verde.
+COSTA_VERDE = [
+    ('reboque-costa-verde', 'Reboque na Costa Verde'),
+    ('reboque-em-mangaratiba', 'Reboque em Mangaratiba'),
+    ('reboque-em-itaguai', 'Reboque em Itaguaí'),
+]
+EXTRA = {'reboque-em-angra-dos-reis': COSTA_VERDE, 'reboque-em-paraty': COSTA_VERDE}
+
+TARGETS = [s for s, _ in SILO]
 
 
 def main():
@@ -38,12 +46,17 @@ def main():
         if not m:
             print('  aviso: widget nao encontrado em %s' % slug)
             continue
-        itens = ''.join(
-            '<li><a href="../%s/" title="%s">%s</a></li>' % (s, label, label)
-            for s, label in SILO if s != slug)
+        lista = EXTRA.get(slug, []) + SILO
+        vistos = set()
+        itens = ''
+        for s, label in lista:
+            if s == slug or s in vistos:
+                continue
+            vistos.add(s)
+            itens += '<li><a href="../%s/" title="%s">%s</a></li>' % (s, label, label)
         h = h[:m.start(2)] + itens + h[m.end(2):]
         open(p, 'w', encoding='utf-8').write(h)
-        print('%-28s menu lateral com %d links' % (slug, len(SILO) - 1))
+        print('%-28s menu lateral com %d links' % (slug, len(vistos)))
 
 
 if __name__ == '__main__':
