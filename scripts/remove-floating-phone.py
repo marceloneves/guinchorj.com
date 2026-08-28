@@ -18,7 +18,7 @@ SLUGS = [
 
 RE_BOTAO = re.compile(r'<div class="floating-button-phone">.*?</div>', re.S)
 CSS_ANTIGA = '.floating-button-whatsapp { right: 20px !important; bottom: 100px !important; top: auto !important; }'
-CSS_NOVA = '.floating-button-whatsapp { right: 20px !important; bottom: 20px !important; top: auto !important; }'
+CSS_NOVA = '.floating-button-whatsapp { right: 10px !important; bottom: 10px !important; top: auto !important; }'
 
 
 def main():
